@@ -1,34 +1,43 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import HomePage from './page';
+import React from 'react';
+import { render, screen, waitFor } from '@testing-library/react';
+import { faker } from '@faker-js/faker';
+import { IProductViewModel } from '@/view_model/product_view_model';
+import ProductPage from './page';
 
-describe('HomePage', () => {
-  test('deve renderizar o título principal', () => {
-    render(<HomePage />);
-    const mainHeading = screen.getByRole('heading', {
-      name: /My Responsive Page/i,
+describe('ProductPage', () => {
+  const productsMock = [
+    {
+      name: faker.commerce.productName(),
+      quantity: faker.number.int({ min: 1, max: 100 }),
+      price: Number(faker.commerce.price()),
+    },
+    {
+      name: faker.commerce.productName(),
+      quantity: faker.number.int({ min: 1, max: 100 }),
+      price: Number(faker.commerce.price()),
+    },
+  ];
+  let viewModel: IProductViewModel;
+  beforeEach(() => {
+    viewModel = {
+      loadProducts: jest.fn(),
+      getProducts: jest.fn(),
+    };
+    jest.spyOn(viewModel, 'getProducts').mockReturnValue(productsMock);
+    render(<ProductPage viewModel={viewModel} />);
+  });
+  it('should renders the product list correctly', async () => {
+    await waitFor(() => {
+      expect(viewModel.loadProducts).toHaveBeenCalled();
     });
-    expect(mainHeading).toBeInTheDocument();
-  });
+    const list = screen.getByRole('list');
+    expect(list).toBeInTheDocument();
 
-  test('deve renderizar os títulos das seções', () => {
-    render(<HomePage />);
-    const sectionHeadings = screen.getAllByRole('heading', { level: 2 });
-    expect(sectionHeadings.length).toBe(2);
-    expect(sectionHeadings[0]).toHaveTextContent(/Section Title/i);
-    expect(sectionHeadings[1]).toHaveTextContent(/Another Section/i);
-  });
-
-  test('deve renderizar o conteúdo das seções', () => {
-    render(<HomePage />);
-    const sectionParagraphs = screen.getAllByText(/Lorem ipsum/i);
-    expect(sectionParagraphs.length).toBeGreaterThan(0);
-  });
-
-  test('deve renderizar o rodapé', () => {
-    render(<HomePage />);
-    const footer = screen.getByText(/© 2024 My Website/i);
-    expect(footer).toBeInTheDocument();
+    productsMock.forEach((product) => {
+      const listItem = screen.getByText(product.name).closest('li');
+      expect(listItem).toBeInTheDocument();
+    });
   });
 });
