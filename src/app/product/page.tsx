@@ -1,3 +1,4 @@
+import ProductTemplate from '@/components/templates/ProductPage';
 import { IProductViewModel } from '@/view_model/product_view_model';
 import React, { useEffect } from 'react';
 
@@ -13,12 +14,6 @@ export default function ProductPage({ viewModel }: ProductPageProps) {
     return viewModel.getProducts();
   }, [viewModel]);
   return (
-    <div>
-      <ul>
-        {products.map((product, index) => (
-          <li key={index}>{product.name}</li>
-        ))}
-      </ul>
-    </div>
+    <ProductTemplate products={products} onDelete={viewModel.deleteProduct} />
   );
 }
