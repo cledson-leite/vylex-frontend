@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
+import './input.module.sass';
+
 type InputProps = {
   type?: string;
   placeholder?: string;

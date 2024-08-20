@@ -1,4 +1,5 @@
 import React from 'react';
+import './button.module.sass';
 
 type ButtonProps = {
   icon: React.ReactNode;
