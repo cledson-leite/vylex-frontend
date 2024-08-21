@@ -1,19 +1,10 @@
 import ProductTemplate from '@/components/templates/ProductPage';
-import { IProductViewModel } from '@/view_model/product_view_model';
-import React, { useEffect } from 'react';
+import './page.sass';
 
-interface ProductPageProps {
-  viewModel: IProductViewModel;
-}
-
-export default function ProductPage({ viewModel }: ProductPageProps) {
-  useEffect(() => {
-    viewModel.loadProducts();
-  }, [viewModel]);
-  const products = React.useMemo(() => {
-    return viewModel.getProducts();
-  }, [viewModel]);
+export default function ProductPage() {
   return (
-    <ProductTemplate products={products} onDelete={viewModel.deleteProduct} />
+    <div className="container">
+      <ProductTemplate />
+    </div>
   );
 }

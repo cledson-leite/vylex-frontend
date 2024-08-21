@@ -1,0 +1,67 @@
+@import '@/app/styles/abstracts/variables'
+
+.pagination
+  display: flex
+  position: fixed
+  bottom: 10px
+  right: 37%
+  justify-content: center
+  align-items: center
+  font-size: 24px
+  gap: 10px
+  transition: all 0.5s ease-out
+
+.pageBtn
+  margin: 0 5px
+  padding: 8px 12px
+  border: none
+  background-color: transparent
+  cursor: pointer
+  color: $accent-color
+
+.pageBtn:disabled
+  margin: 0 5px
+  padding: 8px 12px
+  cursor: not-allowed
+  color: $secondary-color
+
+.pageBtn:active
+  background-color: blue
+  color: white
+  font-weight: bold
+
+.pageBtn::hover:not(.active):not(:disabled)
+  color: lightgray
+  
+.pageContinuos
+  color: $secondary-color
+
+
+.pageValue
+  margin: 0 5px
+  padding: 8px 12px
+  border: none
+  background-color: transparent
+  cursor: pointer
+  color: $secondary-color
+  font-size: 16px
+
+.pageValueCurrent
+  margin: 0 5px
+  padding: 8px 12px
+  border: none
+  background-color: transparent
+  cursor: not-allowed
+  color: $accent-color
+  font-size: 20px
+
+.pageValue:disabled
+  display: none
+
+.pageValue:active
+  background-color: blue
+  color: white
+  font-weight: bold
+
+.pageValue:hover:not(.active):not(:disabled)
+  color: lightgray

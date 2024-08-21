@@ -1,0 +1,31 @@
+@import '@/app/styles/abstracts/variables'
+
+.listItemBtns
+  display: flex
+  gap: 20px
+  font-size: 20px
+
+
+.listItemBtn
+  border: none
+  background-color: $secondary-color
+  cursor: pointer
+  color: $primary-color
+  font-size: 20px
+
+.listItemBtn:disabled
+  cursor: not-allowed
+
+.addButton
+  display: flex
+  justify-content: center
+  align-self: center
+  width: 34px
+  height: 34%
+  cursor: pointer
+  background-color: $secondary-color
+  border: none
+  border-radius: 4px
+  transition: background-color 0.3s
+  color: $primary-color
+  font-size: 30px
