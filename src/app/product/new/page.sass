@@ -1,0 +1,100 @@
+@import '../../styles/abstracts/variables'
+
+.container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: 100vh
+
+.form-container
+  background-color: $primary-color
+  border-radius: 8px
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+  padding: 32px
+  width: 80%
+  max-width: 800px
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-self: center
+  gap: 32px
+
+
+.header
+  display: flex
+  justify-content: center
+  width: 100%
+  text-align: center
+  margin-bottom: 16px
+
+  h1
+    font-size: 32px
+    color: $primary-color
+  
+
+
+.form
+  display: flex
+  flex-direction: column
+  gap: 16px
+  width: 100%
+
+  .input-group
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+    p
+      margin: 0
+
+      label
+        font-weight: bold
+      
+
+      input,
+      textarea
+        width: 100%
+        padding: 8px
+        border: 1px solid #ccc
+        border-radius: 4px
+
+  .button-group
+    display: flex
+    flex-direction: column
+    justify-content: center
+    gap: 8px
+
+    button
+      background-color: red
+      color: $primary-color
+      border: 1px solid $accent-color
+      padding: 12px
+      border-radius: 4px
+      cursor: pointer
+      font-size: 16px
+      transition: background-color 0.3s
+
+      &:hover
+        background-color: $primary-color
+        color: $accent-color
+      
+
+      &:first-child
+        background-color: $primary-color
+        color: $accent-color
+
+      &:first-child:hover
+        background-color: $accent-color
+        color: $primary-color
+
+      &:last-child
+        background-color: green
+        color: $primary-color
+
+      &:last-child:hover
+        background-color: $primary-color
+        color: $accent-color
+      
+    
+  
